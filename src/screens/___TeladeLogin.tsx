@@ -8,6 +8,8 @@ type RootStackParamList = {
   TeladeCadastro1: undefined;
 };
 
+
+
 type NavigationProps = StackNavigationProp<RootStackParamList>;
 
 interface TeladeLoginProps {

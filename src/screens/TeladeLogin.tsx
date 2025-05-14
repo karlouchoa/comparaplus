@@ -44,12 +44,16 @@ const TeladeLogin: React.FC = () => {
         senha: password,
       };
 
+      console.log('Dados do Login:', body);
+
       // Faz a chamada HTTP (POST)
       const response = await fetch('http://103.199.184.26:3020/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
+
+      console.log('Status da Resposta:', response.status);
 
       if (!response.ok) {
         // Se o servidor retornar status >= 400 (ex: 401), pode mostrar erro
@@ -62,7 +66,7 @@ const TeladeLogin: React.FC = () => {
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
       console.log('Resposta do Servidor:', data);
 
-      navigation.navigate('Filtros');
+      navigation.navigate('Home');
 
     } catch (error) {
       console.error(error);
@@ -123,10 +127,9 @@ const TeladeLogin: React.FC = () => {
       </TouchableOpacity>
 
       {/* Agora o botão chama diretamente a função handleLoginRequest */}
-      {/* <TouchableOpacity style={styles.loginButton} onPress={handleLoginRequest}> */}
       <TouchableOpacity style={styles.loginButton} 
-                        // onPress={handleLoginRequest}
-                        onPress={() => navigation.navigate('Home')}
+                        onPress={handleLoginRequest}
+                        // onPress={() => navigation.navigate('Home')}
                         > 
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>

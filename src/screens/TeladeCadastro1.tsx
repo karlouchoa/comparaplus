@@ -123,8 +123,8 @@ const TeladeCadastro1: React.FC = () => {
 
 
       <View style={styles.bottomContainer}>
-  {/* <TouchableOpacity style={styles.button} onPress={handleCadastro}> */}
-  <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TeladeCadastro2', { userId: 1 })}>  
+  <TouchableOpacity style={styles.button} onPress={handleCadastro}>
+  {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TeladeCadastro2', { userId: 1 })}>   */}
 
   <Text style={styles.buttonText}>Próximo</Text>
 </TouchableOpacity>
