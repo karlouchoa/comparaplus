@@ -11,7 +11,7 @@ type RootStackParamList = {
   TeladeLogin: undefined;
 };
 
-type NavigationProps = StackNavigationProp<RootStackParamList, 'TeladeCadastro1'>;
+type NavigationProps = StackNavigationProp<RootStackParamList, 'TeladeCadastro2'>;
 
 const TeladeCadastro1: React.FC = () => {
   const [nome, setNome] = useState('');
@@ -34,6 +34,7 @@ const TeladeCadastro1: React.FC = () => {
         senha,
       });
 
+      console.log("Resposta do servidor:", response.status, response.data);
       const novoUsuario = response.data;
 
       if (response.status === 201 || response.status === 200) {
@@ -58,7 +59,9 @@ const TeladeCadastro1: React.FC = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
+        <ScrollView
+      contentContainerStyle={styles.container}
+    >
       <View style={styles.headerContainer}>
         <Text style={styles.title}>Seja bem-vindo!</Text>
         <Text style={styles.subtitle}>Crie sua conta</Text>
@@ -110,11 +113,17 @@ const TeladeCadastro1: React.FC = () => {
         </View>
       </View>
       </View>
+<View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 4 }}>
+  <View style={{ width: 8, height: 8, backgroundColor: '#467A59', borderRadius: 9999 }} />
+  <View style={{ width: 4, height: 4, backgroundColor: '#E8E8E8', borderRadius: 9999 }} />
+</View>
+
 
       <View style={styles.bottomContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleCadastro}>  
-          <Text style={styles.buttonText}>Próximo</Text>
-        </TouchableOpacity>
+<TouchableOpacity style={styles.button} onPress={handleCadastro}>
+  <Text style={styles.buttonText}>Próximo</Text>
+</TouchableOpacity>
+
 
         <TouchableOpacity onPress={() => navigation.navigate('TeladeLogin')}>  
           <Text style={styles.loginText}>
@@ -128,9 +137,10 @@ const TeladeCadastro1: React.FC = () => {
 
 const styles = StyleSheet.create({
 container: {
-  flexGrow: 1, // Permite que o conteúdo ocupe o espaço necessário
+  flexGrow:1,
   justifyContent: 'center', // Centraliza verticalmente se desejar
   padding: 24,
+  paddingBottom: 40,
   backgroundColor: '#FFFFFF',
 },
 
@@ -170,6 +180,7 @@ container: {
     height: 48,
     backgroundColor: '#FAFAFA',
     borderRadius: 8,
+
     paddingHorizontal: 16,
     fontSize: 14,
   },
@@ -204,6 +215,7 @@ container: {
     borderRadius: 32,
     width: '100%',
     alignItems: 'center',
+    marginTop:40,
   },
   buttonText: {
     fontSize: 16,

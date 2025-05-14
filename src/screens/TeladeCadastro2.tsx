@@ -115,6 +115,11 @@ const TeladeCadastro2: React.FC = () => {
         </View>
       </View>
 
+<View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 4 }}>
+  <View style={{ width: 8, height: 8, backgroundColor: '#E8E8E8', borderRadius: 9999 }} />
+  <View style={{ width: 4, height: 4, backgroundColor: '#467A59', borderRadius: 9999 }} />
+</View>
+
       <View style={styles.bottomContainer}>
         <TouchableOpacity style={styles.button} onPress={handleCadastro}>  
           <Text style={styles.buttonText}>Próximo</Text>
