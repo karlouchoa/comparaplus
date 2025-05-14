@@ -16,6 +16,7 @@ type RootStackParamList = {
   EsqueciaSenha: undefined;
   TeladeCadastro1: undefined;
   TelaInicial1: undefined;
+  Home: undefined;
   Filtros: undefined;
 };
 
@@ -122,7 +123,11 @@ const TeladeLogin: React.FC = () => {
       </TouchableOpacity>
 
       {/* Agora o botão chama diretamente a função handleLoginRequest */}
-      <TouchableOpacity style={styles.loginButton} onPress={handleLoginRequest}>
+      {/* <TouchableOpacity style={styles.loginButton} onPress={handleLoginRequest}> */}
+      <TouchableOpacity style={styles.loginButton} 
+                        // onPress={handleLoginRequest}
+                        onPress={() => navigation.navigate('Home')}
+                        > 
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 

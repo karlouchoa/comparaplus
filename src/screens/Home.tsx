@@ -1,5 +1,16 @@
 import React from "react";
 import { SafeAreaView, View, ScrollView, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type RootStackParamList = {
+  TeladeCadastro1: undefined;
+  TeladeCadastro2: { userId: number };
+  TeladeLogin: undefined;
+  Home: undefined;
+};
+
+type NavigationProps = StackNavigationProp<RootStackParamList, 'Home'>;
 
 interface Props {}
 

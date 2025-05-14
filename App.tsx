@@ -1,13 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  useFonts,
-  Poppins_400Regular,
-  Poppins_600SemiBold,
-  Poppins_700Bold,
-} from '@expo-google-fonts/poppins';
-import AppLoading from 'expo-app-loading';
 
 // Importação das telas
 import TelaInicial1 from './src/screens/TelaInicial1';
@@ -22,22 +15,15 @@ import EsqueciaSenha from './src/screens/EsqueciaSenha';
 import EsqueciaSenha2 from './src/screens/EsqueciaSenha2';
 import EsqueciaSenha3 from './src/screens/EsqueciaSenha3';
 import FilterScreen from './src/screens/Filtros';
+import Home from './src/screens/Home';
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [fontsLoaded] = useFonts({
-    Poppins_400Regular,
-    Poppins_600SemiBold,
-    Poppins_700Bold,
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-
-  return (
+  
+   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="TelaInicial1" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="TelaInicial1" component={TelaInicial1} />
         <Stack.Screen name="TelaInicial2" component={TelaInicial2} />
         <Stack.Screen name="TelaInicial3" component={TelaInicial3} />

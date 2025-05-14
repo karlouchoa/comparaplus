@@ -11,7 +11,7 @@ type RootStackParamList = {
   TeladeLogin: undefined;
 };
 
-type NavigationProps = StackNavigationProp<RootStackParamList, 'TeladeCadastro2'>;
+type NavigationProps = StackNavigationProp<RootStackParamList, 'TeladeCadastro1'>;
 
 const TeladeCadastro1: React.FC = () => {
   const [nome, setNome] = useState('');
@@ -22,6 +22,7 @@ const TeladeCadastro1: React.FC = () => {
   const navigation = useNavigation<NavigationProps>();
 
   const handleCadastro = async () => {
+    console.log("Tentando cadastrar:", { nome, email, senha });
     if (!nome || !email || !senha) {
       Alert.alert('Erro', 'Preencha todos os campos');
       return;
@@ -56,6 +57,8 @@ const TeladeCadastro1: React.FC = () => {
         Alert.alert('Erro de conexão', 'Verifique sua internet e tente novamente.');
       }
     }
+    
+     
   };
 
   return (
@@ -120,7 +123,9 @@ const TeladeCadastro1: React.FC = () => {
 
 
       <View style={styles.bottomContainer}>
-<TouchableOpacity style={styles.button} onPress={handleCadastro}>
+  {/* <TouchableOpacity style={styles.button} onPress={handleCadastro}> */}
+  <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TeladeCadastro2', { userId: 1 })}>  
+
   <Text style={styles.buttonText}>Próximo</Text>
 </TouchableOpacity>
 
