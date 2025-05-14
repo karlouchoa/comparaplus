@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Feather } from '@expo/vector-icons';
 
 type RootStackParamList = {
   EsqueciaSenha: undefined;
@@ -103,11 +104,10 @@ const TeladeLogin: React.FC = () => {
             style={styles.eyeIcon}
             onPress={() => setShowPassword(!showPassword)}
           >
-            <Image
-              source={{
-                uri: 'https://dashboard.codeparrot.ai/api/image/Z99rg_8PKu40N2JS/eye-slas.png',
-              }}
-              style={styles.icon}
+            <Feather
+              name={showPassword ? 'eye' : 'eye-off'}
+              size={24}
+              color="#999"
             />
           </TouchableOpacity>
         </View>
@@ -144,11 +144,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 24,
-    paddingTop: 10,
     justifyContent: 'center',
   },
   headerContainer: {
     marginBottom: 40,
+    alignItems: 'center',  // centralizar o conteúdo do cabeçalho
   },
   title: {
     fontSize: 24,
@@ -157,14 +157,13 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     color: '#121212',
     marginBottom: 8,
-    top: -50,
   },
   subtitle: {
     fontSize: 16,
     fontWeight: '400',
     lineHeight: 24,
     color: '#5F5F63',
-    top: -55,
+    marginBottom: 20,  // espaçamento entre o título e o próximo campo
   },
   inputContainer: {
     marginBottom: 16,
@@ -175,7 +174,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     color: '#121212',
     marginBottom: 6,
-    top: -65,
   },
   input: {
     height: 48,
@@ -183,7 +181,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 16,
     fontSize: 14,
-    top: -65,
   },
   passwordContainer: {
     position: 'relative',
@@ -191,7 +188,7 @@ const styles = StyleSheet.create({
   eyeIcon: {
     position: 'absolute',
     right: 12,
-    top: -53,
+    top: 12,  // ajuste a posição do ícone
   },
   icon: {
     width: 24,
@@ -199,7 +196,7 @@ const styles = StyleSheet.create({
   },
   forgotPasswordButton: {
     marginTop: 10,
-    top: -75,
+    alignSelf: 'center',  // centralizar o botão
   },
   forgotPassword: {
     fontSize: 14,
@@ -215,7 +212,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30,
-    top: -70,
   },
   loginButtonText: {
     fontSize: 16,
@@ -232,7 +228,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
     borderWidth: 1,
     borderColor: '#C1DFC5',
-    top: -70,
   },
   exitButtonText: {
     fontSize: 16,
@@ -243,7 +238,6 @@ const styles = StyleSheet.create({
   signUpContainer: {
     marginTop: 16,
     alignItems: 'center',
-    top: -70,
   },
   signUpText: {
     fontSize: 16,
@@ -252,5 +246,119 @@ const styles = StyleSheet.create({
     color: '#A6A6A6',
   },
 });
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#FFFFFF',
+//     paddingHorizontal: 24,
+//     paddingTop: 10,
+//     justifyContent: 'center',
+//   },
+//   headerContainer: {
+//     marginBottom: 40,
+//   },
+//   title: {
+//     fontSize: 24,
+//     fontWeight: '700',
+//     letterSpacing: -0.72,
+//     lineHeight: 32,
+//     color: '#121212',
+//     marginBottom: 8,
+//     top: -50,
+//   },
+//   subtitle: {
+//     fontSize: 16,
+//     fontWeight: '400',
+//     lineHeight: 24,
+//     color: '#5F5F63',
+//     top: -55,
+//   },
+//   inputContainer: {
+//     marginBottom: 16,
+//   },
+//   label: {
+//     fontSize: 14,
+//     fontWeight: '600',
+//     lineHeight: 20,
+//     color: '#121212',
+//     marginBottom: 6,
+//     top: -65,
+//   },
+//   input: {
+//     height: 48,
+//     backgroundColor: '#FAFAFA',
+//     borderRadius: 8,
+//     paddingHorizontal: 16,
+//     fontSize: 14,
+//     top: -65,
+//   },
+//   passwordContainer: {
+//     position: 'relative',
+//   },
+//   eyeIcon: {
+//     position: 'absolute',
+//     right: 12,
+//     top: -53,
+//   },
+//   icon: {
+//     width: 24,
+//     height: 24,
+//   },
+//   forgotPasswordButton: {
+//     marginTop: 10,
+//     top: -75,
+//   },
+//   forgotPassword: {
+//     fontSize: 14,
+//     fontWeight: '600',
+//     lineHeight: 20,
+//     color: '#467A59',
+//     textAlign: 'center',
+//   },
+//   loginButton: {
+//     height: 48,
+//     backgroundColor: '#C1DFC5',
+//     borderRadius: 48,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     marginTop: 30,
+//     top: -70,
+//   },
+//   loginButtonText: {
+//     fontSize: 16,
+//     fontWeight: '700',
+//     letterSpacing: 0.3,
+//     color: '#121212',
+//   },
+//   exitButton: {
+//     height: 48,
+//     backgroundColor: '#FAF9FD',
+//     borderRadius: 48,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     marginTop: 16,
+//     borderWidth: 1,
+//     borderColor: '#C1DFC5',
+//     top: -70,
+//   },
+//   exitButtonText: {
+//     fontSize: 16,
+//     fontWeight: '700',
+//     letterSpacing: 0.3,
+//     color: '#3E6B4E',
+//   },
+//   signUpContainer: {
+//     marginTop: 16,
+//     alignItems: 'center',
+//     top: -70,
+//   },
+//   signUpText: {
+//     fontSize: 16,
+//     fontWeight: '500',
+//     lineHeight: 24,
+//     color: '#A6A6A6',
+//   },
+// });
 
 export default TeladeLogin;
