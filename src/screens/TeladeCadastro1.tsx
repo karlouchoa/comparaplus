@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert, Scro
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import axios from 'axios';
+import { Feather } from '@expo/vector-icons';
 
 type RootStackParamList = {
   TeladeCadastro1: undefined;
@@ -86,24 +87,28 @@ const TeladeCadastro1: React.FC = () => {
           />
         </View>
 
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>Senha</Text>
-          <View style={styles.passwordContainer}>
-            <TextInput
-              style={[styles.input, styles.passwordInput]}
-              value={senha}
-              onChangeText={setPassword}
-              placeholder="Digite sua senha"
-              secureTextEntry={!showPassword}
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Senha</Text>
+        <View style={styles.passwordContainer}>
+          <TextInput
+            style={styles.input}
+            value={senha}
+            onChangeText={setPassword}
+            placeholder="Digite sua senha"
+            secureTextEntry={!showPassword}
+          />
+          <TouchableOpacity
+            style={styles.eyeIcon}
+            onPress={() => setShowPassword(!showPassword)}
+          >
+            <Feather
+              name={showPassword ? 'eye' : 'eye-off'}
+              size={24}
+              color="#999"
             />
-            <TouchableOpacity 
-              style={styles.eyeIcon}
-              onPress={() => setShowPassword(!showPassword)}
-            >
-              <Image source={{ uri: 'https://dashboard.codeparrot.ai/api/image/Z99xDP8PKu40N2JY/eye-slas.png' }} style={styles.iconImage} />
-            </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
         </View>
+      </View>
       </View>
 
       <View style={styles.bottomContainer}>
@@ -133,16 +138,19 @@ container: {
     marginBottom: 24,
   },
   title: {
-    fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: '700',
+    letterSpacing: -0.72,
+    lineHeight: 32,
     color: '#121212',
+    marginBottom: 8,
   },
   subtitle: {
-    fontFamily: 'Poppins',
     fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 24,
     color: '#5F5F63',
-    marginTop: 8,
+    marginBottom: 20,
   },
   formContainer: {
     gap: 16,
@@ -152,16 +160,18 @@ container: {
     gap: 4,
   },
   label: {
-    fontFamily: 'Open Sans',
     fontSize: 14,
     fontWeight: '600',
+    lineHeight: 20,
     color: '#121212',
+    marginBottom: 6,
   },
   input: {
     height: 48,
     backgroundColor: '#FAFAFA',
     borderRadius: 8,
     paddingHorizontal: 16,
+    fontSize: 14,
   },
   passwordContainer: {
     position: 'relative',
@@ -196,11 +206,16 @@ container: {
     alignItems: 'center',
   },
   buttonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    letterSpacing: 0.3,
     color: '#121212',
-    fontWeight: '600',
   },
   loginText: {
     color: '#888',
+  },
+    inputContainer: {
+    marginBottom: 16,
   },
   loginLink: {
     color: '#388E3C',

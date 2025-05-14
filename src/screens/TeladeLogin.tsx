@@ -240,6 +240,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     alignItems: 'center',
   },
+  
   signUpText: {
     fontSize: 16,
     fontWeight: '500',
