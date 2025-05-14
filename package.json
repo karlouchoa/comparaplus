@@ -9,12 +9,17 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/poppins": "^0.3.1",
     "@expo/metro-runtime": "~4.0.1",
     "@react-navigation/native": "^7.0.18",
     "@react-navigation/stack": "^7.2.2",
+    "app": "^0.1.0",
     "axios": "^1.8.4",
     "expo": "~52.0.40",
+    "expo-app-loading": "^2.1.1",
+    "expo-font": "~13.0.4",
     "expo-status-bar": "~2.0.1",
+    "loading": "^1.13.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "^0.76.7",

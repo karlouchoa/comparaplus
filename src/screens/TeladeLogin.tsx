@@ -16,6 +16,7 @@ type RootStackParamList = {
   EsqueciaSenha: undefined;
   TeladeCadastro1: undefined;
   TelaInicial1: undefined;
+  Filtros: undefined;
 };
 
 type NavigationProps = StackNavigationProp<RootStackParamList>;
@@ -60,7 +61,7 @@ const TeladeLogin: React.FC = () => {
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
       console.log('Resposta do Servidor:', data);
 
-      navigation.navigate('TelaInicial1');
+      navigation.navigate('Filtros');
 
     } catch (error) {
       console.error(error);

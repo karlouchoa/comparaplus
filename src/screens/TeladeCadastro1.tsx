@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import axios from 'axios';
 
-// Tipagem correta do RootStackParamList
 type RootStackParamList = {
   TeladeCadastro1: undefined;
   TeladeCadastro2: { userId: number };
   TeladeLogin: undefined;
 };
 
-// Tipando a navegação
 type NavigationProps = StackNavigationProp<RootStackParamList, 'TeladeCadastro1'>;
 
 const TeladeCadastro1: React.FC = () => {
@@ -23,7 +21,6 @@ const TeladeCadastro1: React.FC = () => {
   const navigation = useNavigation<NavigationProps>();
 
   const handleCadastro = async () => {
-  
     if (!nome || !email || !senha) {
       Alert.alert('Erro', 'Preencha todos os campos');
       return;
@@ -40,17 +37,13 @@ const TeladeCadastro1: React.FC = () => {
 
       if (response.status === 201 || response.status === 200) {
         Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
-  
-        // Navegamos para a próxima tela, enviando o ID do usuário
         navigation.navigate('TeladeCadastro2', {
-          userId: novoUsuario.codigo,  // Supondo que seja "codigo"
+          userId: novoUsuario.codigo,
         });
       } else {
         Alert.alert('Erro', 'Não foi possível realizar o cadastro');
       }
-      
     } catch (error: any) {
-
       if (error.response) {
         if (error.response.status === 409) {
           Alert.alert('Erro', 'Este email já está em uso.');
@@ -58,16 +51,13 @@ const TeladeCadastro1: React.FC = () => {
           Alert.alert('Erro', 'Não foi possível realizar o cadastro');
         }
       } else {
-        Alert.alert(
-          'Erro de conexão', 
-          'Verifique sua internet e tente novamente.'
-        );
+        Alert.alert('Erro de conexão', 'Verifique sua internet e tente novamente.');
       }
     }
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
       <View style={styles.headerContainer}>
         <Text style={styles.title}>Seja bem-vindo!</Text>
         <Text style={styles.subtitle}>Crie sua conta</Text>
@@ -127,114 +117,94 @@ const TeladeCadastro1: React.FC = () => {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    paddingHorizontal: 24,
-    justifyContent: 'center',
-  },
+container: {
+  flexGrow: 1, // Permite que o conteúdo ocupe o espaço necessário
+  justifyContent: 'center', // Centraliza verticalmente se desejar
+  padding: 24,
+  backgroundColor: '#FFFFFF',
+},
+
   headerContainer: {
-    marginBottom: 32,
-    gap: 20,
-    top: -70,
+    marginBottom: 24,
   },
   title: {
     fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: '700',
-    letterSpacing: -0.72,
-    lineHeight: 27,
     color: '#121212',
-    top:20,
   },
   subtitle: {
-    fontFamily: 'Open Sans',
+    fontFamily: 'Poppins',
     fontSize: 16,
-    fontWeight: '400',
-    lineHeight: 15,
     color: '#5F5F63',
-    top: 15,
+    marginTop: 8,
   },
   formContainer: {
     gap: 16,
+    marginBottom: 32,
   },
   inputGroup: {
-    gap: 6,
+    gap: 4,
   },
   label: {
     fontFamily: 'Open Sans',
     fontSize: 14,
     fontWeight: '600',
-    lineHeight: 20,
     color: '#121212',
-    top: -65
   },
   input: {
     height: 48,
     backgroundColor: '#FAFAFA',
     borderRadius: 8,
     paddingHorizontal: 16,
-    fontFamily: 'Open Sans',
-    top: -65,
   },
   passwordContainer: {
     position: 'relative',
   },
   passwordInput: {
-    paddingRight: 48, // Espaço para o ícone de olho
+    paddingRight: 40,
   },
   eyeIcon: {
     position: 'absolute',
     right: 12,
-    top: -53,
+    top: 12,
     width: 24,
     height: 24,
     justifyContent: 'center',
     alignItems: 'center',
-    
   },
   iconImage: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
+    tintColor: '#777',
   },
   bottomContainer: {
-    marginTop: 32,
-    gap: 24,
     alignItems: 'center',
-    top: -70,
+    gap: 24,
   },
   button: {
-    height: 48,
-    backgroundColor: '#C1DFC5',
-    borderRadius: 48,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#C8E6C9',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 32,
     width: '100%',
+    alignItems: 'center',
   },
   buttonText: {
-    fontFamily: 'Open Sans',
-    fontSize: 16,
-    fontWeight: '700',
-    letterSpacing: 0.3,
     color: '#121212',
+    fontWeight: '600',
   },
   loginText: {
-    fontFamily: 'Roboto',
-    fontSize: 16,
-    fontWeight: '500',
-    lineHeight: 24,
-    color: '#A6A6A6',
-    textAlign: 'center',
-    top: -10,
+    color: '#888',
   },
   loginLink: {
-    color: '#2E7D32',
-    fontWeight: '700',
+    color: '#388E3C',
+    fontWeight: 'bold',
   },
 });
 
